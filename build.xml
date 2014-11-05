@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project  name="Compile all " default="deploy" basedir=".">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${ant.library.dir}/ant-contrib-0.6.jar" />
+		</classpath>
+	</taskdef>
+	
+	<property name="tomcat" value="C:/Program Files (x86)/Apache Software Foundation/Tomcat 7.0"/>
+	<property name="tomcat.deployment" value="${tomcat}/webapps"/>
+	<property name="tomcat.bin" value="${tomcat}/bin"/>
+	<property name="tomcat.source" value="./target"/>
+	
+	<!-- Targets -->
+	<target name="deploy">
+		<!--<antcall target="Stop tomcat"/>-->
+		<copy file="${tomcat.source}/HibernateApp.war" todir="${tomcat.deployment}" overwrite="true"/>
+		<!--<antcall target="Start tomcat"/>-->
+	</target>
+	<target name="Start tomcat">
+		<exec executable="${tomcat.bin}/startup.bat"/>
+	</target>
+	<target name="Stop tomcat">
+		<exec executable="${tomcat.bin}/shutdown.bat"/>
+	</target>
+</project>
