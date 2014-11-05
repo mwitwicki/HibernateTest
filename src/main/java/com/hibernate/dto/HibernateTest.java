@@ -1,9 +1,9 @@
+package com.hibernate.dto;
 import org.hibernate.Session;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import com.hibernate.dto.User;
 
 
 public class HibernateTest {
