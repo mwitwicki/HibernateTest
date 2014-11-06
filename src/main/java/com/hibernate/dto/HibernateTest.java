@@ -16,10 +16,15 @@ public class HibernateTest {
 		
 		AnnotationConfiguration config = new AnnotationConfiguration().configure();
 		SessionFactory factory = config.buildSessionFactory();
+		
+		Address address = new Address();
+		address.setCity("Warsaw");
+		address.setStreet("Przyokopowa 31");
+		
 		User user = new User();
 		user.setUserName("Miroslaw");
 		user.setUserAge("30");
-		user.setUserAdress("Zyrardow/Limanowskiego 20");
+		user.setUserAddress(address);
 		
 		Session session = factory.openSession();
 		session.beginTransaction();

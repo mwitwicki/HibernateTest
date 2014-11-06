@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project  name="Deploy WAR" default="deploy" basedir=".">
+<project name="Deploy WAR" default="ant deploy" basedir=".">
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="${ant.library.dir}/ant-contrib-0.6.jar" />
 		</classpath>
 	</taskdef>
-	
-	<property name="tomcat" value="C:/Program Files (x86)/Apache Software Foundation/Tomcat 7.0"/>
-	<property name="tomcat.deployment" value="${tomcat}/webapps"/>
-	<property name="tomcat.bin" value="${tomcat}/bin"/>
-	<property name="tomcat.source" value="./target"/>
-	
+
+	<property name="tomcat" value="C:/Program Files (x86)/Apache Software Foundation/Tomcat 7.0" />
+	<property name="tomcat.deployment" value="${tomcat}/webapps" />
+	<property name="tomcat.bin" value="${tomcat}/bin" />
+	<property name="tomcat.source" value="./target" />
+
 	<!-- Targets -->
-	<target name="deploy">
+	<target name="ant deploy">
 		<!--<antcall target="Stop tomcat"/>-->
-		<copy file="${tomcat.source}/HibernateApp.war" todir="${tomcat.deployment}" overwrite="true"/>
+		<copy file="${tomcat.source}/HibernateApp.war" todir="${tomcat.deployment}" overwrite="true" />
 		<!--<antcall target="Start tomcat"/>-->
 	</target>
+	<target name="mvn deploy">
+		<exec dir="." executable="cmd">
+			<arg line="/c mvn tomcat7:deploy" />
+		</exec>
+	</target>
+	<target name="mvn undeploy">
+		<exec dir="." executable="cmd">
+			<arg line="/c mvn tomcat7:undeploy" />
+		</exec>
+	</target>
+	<target name="mvn redeploy">
+		<exec dir="." executable="cmd">
+			<arg line="/c mvn tomcat7:redeploy" />
+		</exec>
+	</target>
 	<target name="Start tomcat">
-		<exec executable="${tomcat.bin}/startup.bat"/>
+		<exec executable="${tomcat.bin}/startup.bat" />
 	</target>
 	<target name="Stop tomcat">
-		<exec executable="${tomcat.bin}/shutdown.bat"/>
+		<exec executable="${tomcat.bin}/shutdown.bat" />
 	</target>
 </project>
+

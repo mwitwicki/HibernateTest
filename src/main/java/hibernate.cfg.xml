@@ -32,6 +32,7 @@
         <property name="hbm2ddl.auto">create</property>
 
         <mapping class="com.hibernate.dto.User"/>
+        <mapping class="com.hibernate.dto.Address"/>
 
     </session-factory>
 

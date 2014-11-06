@@ -35,42 +35,13 @@
 		<finalName>HibernateApp</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.eclipse.m2e</groupId>
-				<artifactId>lifecycle-mapping</artifactId>
-				<version>1.0.0</version>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
 				<configuration>
-					<lifecycleMappingMetadata>
-						<pluginExecutions>
-							<pluginExecution>
-								<pluginExecutionFilter>
-									<groupId>org.apache.maven.plugins</groupId>
-									<artifactId>maven-antrun-plugin</artifactId>
-									<versionRange>[1.7,)</versionRange>
-									<executions>
-										<execution>
-											<phase>package</phase>
-											<configuration>
-												<tasks>
-													<copy file="target/HibernateApp.war"
-														todir="C:/Program Files (x86)/Apache Software Foundation/Tomcat 7.0/webapps"
-														overwrite="true" />
-												</tasks>
-											</configuration>
-											<goals>
-												<goal>run</goal>
-											</goals>
-										</execution>
-									</executions>
-									<goals>
-										<goal>run</goal>
-									</goals>
-								</pluginExecutionFilter>
-								<action>
-									<ignore />
-								</action>
-							</pluginExecution>
-						</pluginExecutions>
-					</lifecycleMappingMetadata>
+					<url>http://localhost:8080/manager/text</url>
+					<server>TomcatServer</server>
+					<path>/hibernateApp</path>
 				</configuration>
 			</plugin>
 		</plugins>
